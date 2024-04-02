@@ -134,6 +134,7 @@ class LinkedList {
     removeNodeAt(index) {
 
     }
+    
 }
 
 
@@ -144,3 +145,17 @@ list.append("Mojito");
 list.append("Daquiri");
 list.append("Margarita");
 list.append("Old Fashioned");
+
+const fruitArray = ["apple", "orange", "banana", "avocado", "grapefruit"];
+
+
+function convertArrayToLinkedList(array) {
+
+    let linkedList = new LinkedList();
+
+    for (let i = 0; i < array.length; i++) {
+        linkedList.append(array[i]);
+    }
+    console.log(linkedList.toString());
+    return linkedList;
+}
