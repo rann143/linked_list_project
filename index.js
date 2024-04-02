@@ -126,12 +126,45 @@ class LinkedList {
     }
 
     insertNodeAt(newValue, index) {
+        let previous = null;
+        let current = this.head;
 
+        let originalNode = this.getNodeAt(index);
+        let newNode = new Node(newValue)
 
+        while (current !== null && current !== this.getNodeAt(index)) {
+            previous = current;
+            current = current.nextNode;
+        }
+
+        if (current !== null) {
+            previous.nextNode = newNode;
+            newNode.nextNode = originalNode;
+        }
 
     }
 
     removeNodeAt(index) {
+
+        let previous = null;
+        let current = this.head;
+
+        if (this.head === this.getNodeAt(index)) {
+            this.head = current.nextNode;
+        }
+
+        
+        while (current !== null && current !== this.getNodeAt(index)) {
+            previous = current;
+            current = current.nextNode;
+        }
+
+        if (current !== null && current === this.tail) {
+            previous.nextNode = null;
+            this.tail = previous
+        } else  if (current !== null) {
+            previous.nextNode = current.nextNode;
+        } else return "No Node At This Index";
 
     }
     
@@ -145,6 +178,8 @@ list.append("Mojito");
 list.append("Daquiri");
 list.append("Margarita");
 list.append("Old Fashioned");
+
+console.log(list);
 
 const fruitArray = ["apple", "orange", "banana", "avocado", "grapefruit"];
 
